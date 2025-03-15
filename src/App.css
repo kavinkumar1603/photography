@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+/* ...existing code... */
+
+.login-container {
+  display: flex;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-form {
+  flex: 1;
+  padding: 50px; /* Corrected padding */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login-form h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-form p {
+  margin-bottom: 20px;
+}
+
+.branch-select, .login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-logo {
+  flex: 1;
+  background: linear-gradient(to bottom right, #6a11cb, #2575fc);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
   color: white;
+  border-radius: 50px; /* Ensured border-radius */
+  padding: 20px;
+  border-top-left-radius: 00px;
+  border-bottom-right-radius:0px ;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 300px;
+  border-top-right-radius: 00px;
 }
 
-.App-link {
-  color: #61dafb;
+.login-logo img {
+  width: 100px;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-logo h1 {
+  font-size: 36px;
 }
