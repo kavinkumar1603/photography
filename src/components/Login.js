@@ -7,7 +7,7 @@ function Login() {
         <h2>Branch Login</h2>
         <p>Enter your email and password to log in!</p>
         <select className="branch-select">
-          <option>Choose your option</option>   
+          <option value="" disabled selected>Choose your option</option> {/* Placeholder option */}
           <option>Pollachi</option> 
           <option>Coimbatore</option>
           <option>Dindigul</option>
