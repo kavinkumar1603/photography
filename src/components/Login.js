@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import circle from '../assests/circle.jpg'; // Corrected path
+import Profile from './Profile'; // Import the Profile component
+
 function Login() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login
+
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Set login state to true
+  };
+
+  if (isLoggedIn) {
+    return <Profile />; // Show Profile page after login
+  }
+
   return (
     <div className="login-container">
       <div className="login-form">
@@ -20,10 +32,10 @@ function Login() {
           </label>
           <a href="#" className="forgot-password">Forget password?</a>
         </div>
-        <button className="login-button">Login</button>
+        <button className="login-button" onClick={handleLogin}>Login</button>
       </div>
       <div className="login-logo">
-      <img src={circle} alt="Logo" />
+        <img src={circle} alt="Logo" />
         <h1>NAME</h1>
       </div>
     </div>
