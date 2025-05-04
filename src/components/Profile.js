@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faMoneyBill, faChartBar, faUser } from '@fortawesome/free-solid-svg-icons';
 import profilepic from '../assests/profilepic.jpg'; // Add your profile picture path
+import PriceList from './PriceList'; // Import PriceList component
+import Dashboard from './Dashboard'; // Import Dashboard component
 
 function Profile() {
   const [isEditing, setIsEditing] = useState(false);
+  const [currentPage, setCurrentPage] = useState('profile'); // Add state for current page
   const [profile, setProfile] = useState({
     adminId: '110A',
     name: 'Adela Parkson',
@@ -25,19 +28,30 @@ function Profile() {
 
   const handleSave = () => {
     setIsEditing(false);
-    // Add logic to save updated profile details (e.g., API call)
     console.log('Profile updated:', profile);
   };
+
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Render the appropriate component based on the current page
+  if (currentPage === 'dashboard') {
+    return <Dashboard />; // Render the Dashboard component
+  }
+  if (currentPage === 'pricelist') {
+    return <PriceList />; // Render the PriceList component
+  }
 
   return (
     <div style={{ display: 'flex' }}>
       <div className="sidebar">
         <h1>NAME</h1>
         <ul>
-          <li><a href="#"><span className="icon"><FontAwesomeIcon icon={faHome} /></span>Dashboard</a></li>
-          <li><a href="#"><span className="icon"><FontAwesomeIcon icon={faMoneyBill} /></span>Price List</a></li>
-          <li><a href="#"><span className="icon"><FontAwesomeIcon icon={faChartBar} /></span>Report</a></li>
-          <li><a href="#"><span className="icon"><FontAwesomeIcon icon={faUser} /></span>Profile</a></li>
+          <li><a href="#" onClick={() => handleNavigation('dashboard')}><span className="icon"><FontAwesomeIcon icon={faHome} /></span>Dashboard</a></li>
+          <li><a href="#" onClick={() => handleNavigation('pricelist')}><span className="icon"><FontAwesomeIcon icon={faMoneyBill} /></span>Price List</a></li>
+          <li><a href="#" onClick={() => handleNavigation('report')}><span className="icon"><FontAwesomeIcon icon={faChartBar} /></span>Report</a></li>
+          <li><a href="#" onClick={() => handleNavigation('profile')}><span className="icon"><FontAwesomeIcon icon={faUser} /></span>Profile</a></li>
         </ul>
         <button className="logout-button">Logout</button>
       </div>
@@ -82,7 +96,6 @@ function Profile() {
           </div>
           <div className="profile-card-right" style={{ textAlign: 'center' }}>
             <img src={profilepic} alt="Profile" style={{ borderRadius: '50%', width: '120px', height: '120px', marginBottom: '15px' }} />
-            <button onClick={handleEditToggle} className="edit-button" style={{ padding: '10px 20px', backgroundColor: '#007BFF', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>{isEditing ? 'Cancel' : 'Edit'}</button>
           </div>
         </div>
       </div>
