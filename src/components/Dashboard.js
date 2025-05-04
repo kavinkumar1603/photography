@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Line, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 
@@ -6,8 +6,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcElement, Title, Tooltip, Legend);
 
 function Dashboard() {
-  // Data for the line chart
-  const lineData = {
+  const [lineData, setLineData] = useState({
     labels: ['SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB'],
     datasets: [
       {
@@ -19,9 +18,23 @@ function Dashboard() {
         tension: 0.4, // Smooth curve
       },
     ],
-  };
+  });
 
-  // Data for the pie chart
+  // Update the graph data every 7 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLineData((prevData) => ({
+        ...prevData,
+        datasets: prevData.datasets.map((dataset) => ({
+          ...dataset,
+          data: dataset.data.map((value) => value + Math.random() * 1000 - 500), // Mild variation
+        })),
+      }));
+    }, 7000);
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
   const pieData = {
     labels: ['Payments Done', 'Pending'],
     datasets: [

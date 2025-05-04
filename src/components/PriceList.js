@@ -57,11 +57,15 @@ function PriceList() {
   };
 
   const handleGenerateBill = () => {
-    navigate('/invoice'); // Navigate to the Invoice page
+    const selectedItems = frames.map((frame, index) => ({
+      ...frame,
+      quantity: quantities[index],
+    }));
+    navigate('/generate-bill', { state: { selectedItems } }); // Pass selectedItems to GenerateBill
   };
 
   return (
-    <div style={{ flex: 1, padding: '20px', backgroundColor: '#f9f9f9', minHeight: '100vh', marginLeft: '250px' }}>
+    <div style={{ flex: 1, padding: '20px', backgroundColor: '#f9f9f9', minHeight: '100vh', marginLeft: '0px' }}>
       <h2 style={{ fontSize: '24px', marginBottom: '10px', color: '#333' }}>Pages / Price List</h2>
       <h3 style={{ fontSize: '20px', marginBottom: '20px', color: '#28a745' }}>Pollachi Branch</h3>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
