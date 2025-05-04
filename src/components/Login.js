@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-import circle from '../assests/circle.jpg'; // Corrected path
+import circle from '../assests/circle2.jpg'; // Corrected path
 
 function Login() {
   const navigate = useNavigate(); // Initialize useNavigate for navigation
@@ -140,6 +140,7 @@ function Login() {
           alignItems: 'center',
           backgroundColor: '#007bff',
           color: '#fff',
+          borderBottomLeftRadius: '150px', // Add curve to the bottom-left corner
         }}
       >
         <img
@@ -165,7 +166,9 @@ function Login() {
               width: 100%;
             }
             div[style*="background-color: #007bff"] {
+              border-radius: 0;
               display: none;
+            
             }
           }
         `}
